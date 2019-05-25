@@ -53,6 +53,4 @@ public class StudentCalc extends Application {
 			e.printStackTrace();
 		}
 	}
-
-
 }
