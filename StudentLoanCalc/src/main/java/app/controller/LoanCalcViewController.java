@@ -11,21 +11,31 @@ import javafx.fxml.Initializable;
 import javafx.event.ActionEvent;
 import javafx.scene.control.DatePicker;
 
-public class LoanCalcViewController implements Initializable   {
+
+public class LoanCalcViewController extends Loan implements Initializable   {
 
 	private StudentCalc SC = null;
 	
 	@FXML
 	private TextField LoanAmount;
 
-	
 	@FXML
-	private Label lblTotalPayemnts;
+	private TextField InterestRate;
 	
 	@FXML
 	private DatePicker PaymentStartDate;
 	
+	@FXML
+	private TextField Years;
+
+	@FXML
+	private TextField ExtraPayment;
 	
+	@FXML
+	private Label lblTotalPayments;
+	
+	@FXML
+	private Label lblTotalInterest;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -48,10 +58,13 @@ public class LoanCalcViewController implements Initializable   {
 		double dLoanAmount = Double.parseDouble(LoanAmount.getText());
 		System.out.println("Amount: " + dLoanAmount);	
 		
-		lblTotalPayemnts.setText("123");
+		lblTotalPayments.setText((String.valueOf(findTotalPayments(Double.parseDouble(LoanAmount.getText()),
+				Integer.parseInt(Years.getText()),
+				Double.parseDouble(InterestRate.getText())))));
 		
-		LocalDate localDate = PaymentStartDate.getValue();
-	 
-		System.out.println(localDate);
+		lblTotalInterest.setText(String.valueOf(findTotalPayments(Double.parseDouble(LoanAmount.getText()),
+				Integer.parseInt(Years.getText()),
+				Double.parseDouble(InterestRate.getText()))-Double.parseDouble(LoanAmount.getText())));
+		
 	}
 }

@@ -1,10 +1,12 @@
 package pkgUT;
-
 import static org.junit.Assert.*;
+
 import org.apache.poi.ss.formula.functions.*;
 import org.junit.Test;
+import app.controller.Loan;
 
-public class TestPMT {
+public class TestPMT extends Loan{
+
 
 	@Test
 	public void test() {
@@ -21,10 +23,33 @@ public class TestPMT {
 		assertEquals(PMTExpected, PMT, 0.01);
 		
 		
+	@Test
+	public void totalPaymentTest1() {
+		double loanAmount = 200000;
+		int loanTerm = 15;
+		double interestRate = 7;
+			
+		double expected = 323578;
+		double actual = findTotalPayments(loanAmount, loanTerm, interestRate);
+		actual = Math.round(actual * 100) / 100;
+			
+		assertEquals(expected, actual, 0);
+		}
 		
+	@Test
+	public void totalPaymentTest2() {
+		double loanAmount = 300000;
+		int loanTerm = 5;
+		double interestRate = 8;
+			
+		double expected = 364975;
+		double actual = findTotalPayments(loanAmount, loanTerm, interestRate);
+		actual = Math.round(actual * 100) / 100;
+			
+		assertEquals(expected, actual, 0);		
+			
+		}
+
 	}
 
 }
-
- 
-
