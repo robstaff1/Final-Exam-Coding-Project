@@ -65,6 +65,5 @@ public class LoanCalcViewController extends Loan implements Initializable   {
 		lblTotalInterest.setText(String.valueOf(findTotalPayments(Double.parseDouble(LoanAmount.getText()),
 				Integer.parseInt(Years.getText()),
 				Double.parseDouble(InterestRate.getText()))-Double.parseDouble(LoanAmount.getText())));
-		
-	}
+		}
 }
